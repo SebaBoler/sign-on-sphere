@@ -11,7 +11,9 @@
     "outDir": "./dist",
     "baseUrl": "./",
     "paths": {
-      "#utils": ["./src/utils"]
+      "#utils": ["./src/utils"],
+      "#users": ["./src/users"],
+      "#auth": ["./src/auth"]
     },
     "incremental": true,
     "skipLibCheck": true,

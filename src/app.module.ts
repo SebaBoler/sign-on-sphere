@@ -2,16 +2,16 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthController } from './auth/auth.controller';
+import { NotificationsModule } from './notifications/notifications.module';
+import { NotificationsController } from './notifications/notifications.controller';
 import { NotificationsService } from './notifications/notifications.service';
 import { UsersModule } from './users/users.module';
-import { UserModule } from './user/user.module';
-import { AuthModule } from './auth/auth.module';
-import { UserController } from './user/user.controller';
-import { AuthController } from './auth/auth.controller';
+import { CqrsModule } from '@nestjs/cqrs';
+import { EventStoreModule } from './core/eventstore/eventstore.module';
 
 @Module({
-  imports: [AuthModule, UserModule, UsersModule],
-  controllers: [AppController, AuthController, UserController],
+  imports: [EventStoreModule, UsersModule, NotificationsModule, CqrsModule],
+  controllers: [AppController, AuthController, NotificationsController],
   providers: [AppService, NotificationsService],
 })
 export class AppModule {}

@@ -1,7 +1,14 @@
+import { AuthService, authConfiguration } from '#auth';
 import { Module } from '@nestjs/common';
-import { AuthService } from './auth.service';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  providers: [AuthService]
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [authConfiguration],
+    }),
+  ],
+  providers: [AuthService],
 })
 export class AuthModule {}

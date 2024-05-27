@@ -21,8 +21,8 @@ SignOnSphere is a NestJS-based application that provides user registration, auth
 
 ### Prerequisites
 
-- Node.js (v14 or higher)
-- npm (v6 or higher) or Yarn (v1.22 or higher)
+- Node.js (v18 or higher)
+- npm (v9 or higher) or Yarn (v1.22 or higher)
 - PostgreSQL
 - Kafka
 
