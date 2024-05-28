@@ -7,6 +7,6 @@ export class UserCreatedHandler implements IEventHandler<UserCreatedEvent> {
 
   async handle(event: UserCreatedEvent): Promise<void> {
     console.log('UserCreatedEvent', event);
-    // return this.usersService.create(event);
+    return this.usersService.create(event);
   }
 }

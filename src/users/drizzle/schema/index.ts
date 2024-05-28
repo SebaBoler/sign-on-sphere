@@ -1,4 +1,3 @@
-import { sql } from 'drizzle-orm';
 import {
   pgSchema,
   timestamp,
@@ -8,14 +7,12 @@ import {
   varchar,
 } from 'drizzle-orm/pg-core';
 
-export const user = pgSchema('users');
+export const user = pgSchema('user');
 
 export const users = user.table(
   'users',
   {
-    id: uuid('user_id')
-      .primaryKey()
-      .default(sql`uuid_generate_v4()`),
+    id: uuid('user_id').primaryKey().defaultRandom(),
     username: varchar('username').notNull(),
     name: varchar('name').notNull(),
     email: varchar('email'),
