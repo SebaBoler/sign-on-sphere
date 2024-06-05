@@ -1,15 +1,10 @@
-import { EventStoreDBClient } from '@eventstore/db-client';
-import { Module, Global } from '@nestjs/common';
+import { Module } from '@nestjs/common';
+import { CqrsModule } from '@nestjs/cqrs';
+import { EventStoreService } from './eventstore.service';
 
-const EventStore = {
-  provide: EventStoreDBClient,
-  useFactory: () =>
-    EventStoreDBClient.connectionString(
-      process.env.ESDB_CONN_STRING ||
-        'esdb://admin:changeit@localhost:2113?tls=false',
-    ),
-};
-
-@Global()
-@Module({ providers: [EventStore], exports: [EventStore] })
+@Module({
+  imports: [CqrsModule],
+  providers: [EventStoreService],
+  exports: [EventStoreService],
+})
 export class EventStoreModule {}
