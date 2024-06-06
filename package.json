@@ -21,7 +21,7 @@
     "drizzle": "drizzle-kit",
     "drizzle:generate": "drizzle-kit generate",
     "drizzle:check": "drizzle-kit check",
-    "drizzle:push":  "drizzle-kit push",
+    "drizzle:push": "drizzle-kit push",
     "drizzle:migrate": "drizzle-kit migrate",
     "drizzle:studio": "drizzle-kit studio"
   },
@@ -40,11 +40,14 @@
     "date-fns": "^3.6.0",
     "drizzle-orm": "^0.31.1",
     "eslint-plugin-drizzle": "^0.2.3",
+    "global": "^4.4.0",
+    "ncu": "^0.2.1",
     "passport": "^0.7.0",
     "pg": "^8.12.0",
     "postgres": "^3.4.4",
     "reflect-metadata": "^0.2.2",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.3.2",

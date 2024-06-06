@@ -1,6 +1,7 @@
-import { EventStoreService } from '#core';
-import { UserCreatedEvent } from '#users';
+import 'reflect-metadata'
 import { EventsHandler, IEventHandler } from '@nestjs/cqrs';
+import { EventStoreService } from 'src/core/eventstore';
+import { UserCreatedEvent } from './user-created.event';
 
 @EventsHandler(UserCreatedEvent)
 export class UserCreatedHandler implements IEventHandler<UserCreatedEvent> {
