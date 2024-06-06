@@ -14,8 +14,11 @@ export class UserService {
 
   async userExists(username: string, email: string): Promise<boolean> {
     // Tu powinna być logika sprawdzania w rzeczywistej bazie danych
-    return this.users.some(
+    console.log('Checking if user exists:', username, email);
+    const user = this.users.some(
       (user) => user.username === username || user.email === email,
     );
+    console.log('User exists:', user);
+    return user;
   }
 }

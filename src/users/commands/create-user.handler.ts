@@ -28,14 +28,4 @@ export class CreateUserHandler implements ICommandHandler<CreateUserCommand> {
   }
 }
 
-// import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
-// import { CreateUserCommand } from '../impl/create-user.command';
 
-// @CommandHandler(CreateUserCommand)
-// export class CreateUserHandler implements ICommandHandler<CreateUserCommand> {
-//   constructor(/* dependencies */) {}
-
-//   async execute(command: CreateUserCommand): Promise<any> {
-//     // handler logic
-//   }
-// }

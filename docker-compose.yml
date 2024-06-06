@@ -8,27 +8,22 @@ services:
       mode: replicated
       replicas: 1
     environment:
-      EVENTSTORE_EXT_HTTP_PORT: 2113
-      EVENTSTORE_EXT_TCP_PORT: 1113
-      EVENTSTORE_INT_HTTP_PORT: 2112
+      EVENTSTORE_HTTP_PORT: 2113
       EVENTSTORE_INT_TCP_PORT: 1112
       EVENTSTORE_DB: /var/lib/eventstore
       EVENTSTORE_LOG: /var/log/eventstore
       EVENTSTORE_CLUSTER_SIZE: 1
       EVENTSTORE_RUN_PROJECTIONS: All
       EVENTSTORE_START_STANDARD_PROJECTIONS: true
-      EVENTSTORE_EXT_IP: '0.0.0.0'
-      EVENTSTORE_INT_IP: '0.0.0.0'
+      EVENTSTORE_NODE_IP: '0.0.0.0'
+      EVENTSTORE_REPLICATION_IP: '0.0.0.0'
+      EVENTSTORE_INSECURE: true
     ports:
       - '2113:2113'
       - '1113:1113'
     volumes:
-      - type: volume
-        source: eventstore-data
-        target: /var/lib/eventstore
-      - type: volume
-        source: eventstore-logs
-        target: /var/log/eventstore
+      - eventstore-data:/var/lib/eventstore
+      - eventstore-logs:/var/log/eventstore
 
   postgres:
     image: postgres:15
@@ -41,7 +36,7 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
     ports:
-      - '5432:5432'
+      - '5433:5432'
     volumes:
       - postgres-data:/var/lib/postgresql/data
 
