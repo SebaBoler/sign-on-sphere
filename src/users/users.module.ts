@@ -3,10 +3,12 @@ import { ConfigModule } from '@nestjs/config';
 import {
   CreateUserHandler,
   UserController,
+  UserCreatedHandler,
   UserService,
   userConfiguration,
 } from '#users';
 import { CqrsModule } from '@nestjs/cqrs';
+import { EventStoreService } from '#core';
 
 @Module({
   imports: [
@@ -14,6 +16,11 @@ import { CqrsModule } from '@nestjs/cqrs';
     CqrsModule,
   ],
   controllers: [UserController],
-  providers: [UserService, CreateUserHandler],
+  providers: [
+    UserService,
+    CreateUserHandler,
+    UserCreatedHandler,
+    EventStoreService,
+  ],
 })
 export class UsersModule {}

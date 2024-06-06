@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CommandBus } from '@nestjs/cqrs';
 import { CreateUserCommand } from './commands/create-user.command';
+import { InputCreateUserDto } from './dtos/input.create-user.dto';
 
 @Injectable()
 export class UserService {
@@ -8,8 +9,8 @@ export class UserService {
 
   constructor(private readonly commandBus: CommandBus) {}
 
-  async createUser(name: string, email: string, password: string) {
-    await this.commandBus.execute(new CreateUserCommand(name, email, password));
+  async createUser(createUserDto: InputCreateUserDto) {
+    await this.commandBus.execute(new CreateUserCommand(createUserDto));
   }
 
   async userExists(username: string, email: string): Promise<boolean> {

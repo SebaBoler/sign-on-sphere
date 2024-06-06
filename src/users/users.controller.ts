@@ -8,12 +8,15 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post()
-    @ApiOperation({ summary: 'Create a new user' })
+  @ApiOperation({ summary: 'Create a new user' })
   @ApiBody({ type: InputCreateUserDto })
-  @ApiResponse({ status: 201, description: 'The user has been successfully created.' })
+  @ApiResponse({
+    status: 201,
+    description: 'The user has been successfully created.',
+  })
   @ApiResponse({ status: 400, description: 'Invalid input.' })
   async createUser(@Body() createUserDto: InputCreateUserDto) {
     const { name, email, password } = createUserDto;
-    await this.userService.createUser(name, email, password);
+    await this.userService.createUser(createUserDto);
   }
 }
